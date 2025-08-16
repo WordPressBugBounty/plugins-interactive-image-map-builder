@@ -1,0 +1,1 @@
+# plugins-interactive-image-map-builder
