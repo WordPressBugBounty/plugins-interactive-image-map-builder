@@ -76,7 +76,9 @@ function isimb_6310_set_generate_json_data(
 
   // check selector type
 
-  myObj.linkText = jQuery(selector + ".isimb_6310_link_text").val();
+  myObj.linkText = (
+    jQuery(selector + ".isimb_6310_link_text").val() || ""
+  ).replace(/'/g, "@@##!!@@");
   myObj.linkURL = jQuery(selector + ".isimb_6310_custom_link_url").val();
   myObj.openNewTab = jQuery(
     selector + ".isimb-6310-open-new-tab:checked"
@@ -87,9 +89,9 @@ function isimb_6310_set_generate_json_data(
     selector + ".isimb-6310-open-popup-custom-use:checked"
   ).val();
   myObj.openDesImg = jQuery(selector + ".isimb-6310-des-img").val();
-  myObj.openDescription = jQuery(
-    selector + ".isimb-6310-tooltip_discription"
-  ).val();
+  myObj.openDescription = (
+    jQuery(selector + ".isimb-6310-tooltip_discription").val() || ""
+  ).replace(/'/g, "@@##!!@@");
   myObj.openDesFontSize = jQuery(
     selector + ".isimb-6310-tooltip_discription_font_size"
   ).val();
@@ -119,21 +121,23 @@ function isimb_6310_set_generate_json_data(
   myObj.tempCommonBgColor = jQuery(
     selector + ".isimb_6310_template_bg_color"
   ).val();
-  myObj.tem02EmbeddedLink = isimb_6310_get_embedded_attributes(
-    jQuery(selector + ".isimb-6310-embedded_code_link").val()
-  );
+  myObj.tem02EmbeddedLink = (
+    isimb_6310_get_embedded_attributes(
+      jQuery(selector + ".isimb-6310-embedded_code_link").val()
+    ) || ""
+  ).replace(/'/g, "@@##!!@@");
 
-  let customCode = jQuery(
-    selector + "textarea[name='isimb-6310-custome_html']"
-  ).val();
+  let customCode = (
+    jQuery(selector + "textarea[name='isimb-6310-custome_html']").val() || ""
+  ).replace(/'/g, "@@##!!@@");
 
   customCode = customCode.replace(/='/g, '="');
   customCode = customCode.replace(/'>/g, '">');
 
   myObj.customeHtmlCode = customCode;
-  myObj.customeCssCode = jQuery(
-    selector + `textarea[name='isimb-6310-custome_css']`
-  ).val();
+  myObj.customeCssCode = (
+    jQuery(selector + `textarea[name='isimb-6310-custome_css']`).val() || ""
+  ).replace(/'/g, "@@##!!@@");
   myObj.pluginShortCode = jQuery(
     selector + `input[name='isimb_6310_plugin_short_code']`
   ).val();
@@ -381,10 +385,10 @@ function isimb_6310_set_json_data() {
     jsonData.customePopupCss
   );
   jQuery(`textarea[name='isimb-6310-custome_html']`).val(
-    jsonData.customeHtmlCode
+    (jsonData.customeHtmlCode || "").replace(/@@##!!@@/g, "'")
   );
   jQuery(`textarea[name='isimb-6310-custome_css']`).val(
-    jsonData.customeCssCode
+    (jsonData.customeCssCode || "").replace(/@@##!!@@/g, "'")
   );
   jQuery(`input[name='isimb_6310_plugin_short_code']`).val(
     jsonData.pluginShortCode
@@ -398,11 +402,15 @@ function isimb_6310_set_json_data() {
   jQuery(`input[name='isimb_6310_plugin_short_code_tooltip_padding']`).val(
     jsonData.pluginShortCodePadding
   );
-  jQuery(".isimb_6310_link_text").val(jsonData.linkText);
+  jQuery(".isimb_6310_link_text").val(
+    (jsonData.linkText || "").replace(/@@##!!@@/g, "'")
+  );
   jQuery(".isimb_6310_custom_link_url").val(jsonData.linkURL);
   jQuery(".isimb_6310_custom_link_url_direct").val(jsonData.linkURLDirect);
   jQuery(".isimb-6310-des-img").val(jsonData.openDesImg);
-  jQuery(".isimb-6310-tooltip_discription").val(jsonData.openDescription);
+  jQuery(".isimb-6310-tooltip_discription").val(
+    (jsonData.openDescription || "").replace(/@@##!!@@/g, "'")
+  );
   jQuery(".isimb-6310-tooltip_discription_font_size").val(
     jsonData.openDesFontSize
   );
@@ -466,7 +474,9 @@ function isimb_6310_set_json_data() {
     //Uncommon fields
     if (jsonData.selectedTemplate == "02") {
       jQuery(".isimb-6310-embedded_code_link").val(
-        isimb_6310_create_embedded_code(jsonData.tem02EmbeddedLink)
+        (
+          isimb_6310_create_embedded_code(jsonData.tem02EmbeddedLink) || ""
+        ).replace(/@@##!!@@/g, "'")
       );
     }
 

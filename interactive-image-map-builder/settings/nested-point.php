@@ -32,7 +32,7 @@
       <div class="isimb-6310-modal-body-form">
         <div class="tabbed-content-wrap">
           <table border="0" width="100%" cellpadding="10" cellspacing="0"></table>
-          <input type="text"
+          <input type="hidden"
             isimb-6310-image-url='<?php echo isset($cssData['main_image']) ? $cssData['main_image'] : '' ?>'
             class="isimb-6310-canvas-area-nested" />
           <div class="isimb-6310-canvas-wrapper"></div>
@@ -63,7 +63,7 @@
       <div class="isimb-6310-modal-body-form">
         <div class="tabbed-content-wrap">
           <button class="isimb-6310-remove" onclick="ConfirmDelete()"><i class="fas fa-trash"></i>Delete</button>
-          <input type="text"
+          <input type="hidden"
             isimb-6310-image-url='<?php echo isset($cssData['main_image']) ? $cssData['main_image'] : '' ?>'
             class="isimb-6310-canvas-area-nested-edit" />
           <div class="isimb-6310-canvas-wrapper"></div>

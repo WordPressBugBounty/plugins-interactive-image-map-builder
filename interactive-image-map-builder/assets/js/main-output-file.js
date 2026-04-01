@@ -81,7 +81,7 @@ window.addEventListener("load", function () {
             el.addEventListener("click", function () {
               isimb_6310_create_polygon();
             });
-            el.addEventListener("touchstart", function () {
+            el.addEventListener("pointerup", function () {
               isimb_6310_create_polygon();
             });
           });
@@ -503,7 +503,7 @@ function isimb_6310_polygon_size(coords) {
 }
 
 function isimb_6310_close_button() {
-  jQuery("body").on("click touchstart", function (event) {
+  jQuery("body").on("pointerup", function (event) {
     if (event.target.closest(".isimb-6310-modal-content")) return;
     if (!event.target.closest(".isimb-6310-modal")) return;
 
@@ -541,7 +541,7 @@ function isimb_6310_close_button() {
   });
 
   jQuery("body").on(
-    "click touchstart",
+    "pointerup",
     ".isimb-6310-close-button",
     function (event) {
       jQuery(".isimb-6310-modal").css({
@@ -583,7 +583,7 @@ function isimb_6310_close_button() {
 function isimb_6310_popup_open() {
   //Popup Open
   jQuery("body").on(
-    "click touchstart",
+    "pointerup",
     ".isimb-6310-pol-loaded, .isimb-6310-pol-loaded-nested",
     function () {
       // let directLink = jQuery(this)
@@ -697,7 +697,11 @@ function isimb_6310_popup_open() {
 function isimb_6310_hover_pointer() {
   //Hover on pointer
   jQuery(".isimb-6310-pol-loaded, .isimb-6310-pol-loaded-nested")
-    .on("mouseover touchstart", function () {
+    .on("pointerenter pointerdown", function (e) {
+      if (e.pointerType === "touch" && e.type === "pointerenter") {
+        return;
+      }
+
       clearTimeout(isimb_6310_Timeout);
       let pointId =
         jQuery(this).attr("data-id") || jQuery(this).attr("data-nested-id");
@@ -743,7 +747,10 @@ function isimb_6310_hover_pointer() {
 
   setTimeout(function () {
     jQuery(".isimb-6310-hover-content")
-      .on("mouseover touchstart", function () {
+      .on("pointerenter pointerdown", function (e) {
+        if (e.pointerType === "touch" && e.type === "pointerenter") {
+          return;
+        }
         clearTimeout(isimb_6310_Timeout);
       })
       .mouseout(function () {
@@ -781,7 +788,7 @@ function isimb_6310_create_polygon() {
 function isimb_6310_direct_link() {
   setTimeout(() => {
     jQuery("body").on(
-      "click touchstart",
+      "pointerup",
       "[isimb-6310-direct-link]",
       function () {
         var target = Number(
@@ -804,9 +811,12 @@ function isimb_6310_direct_link() {
 
 function isimb_6310_polygon_color_change() {
   jQuery("body").on(
-    "mouseover touchstart",
+    "pointerenter pointerdown",
     ".isimb-6310-pol-loaded-nested, .isimb-6310-pol-loaded",
-    function () {
+    function (e) {
+      if (e.pointerType === "touch" && e.type === "pointerenter") {
+        return;
+      }
       jQuery(".isimb-6310-dynamic-css").remove();
       let parentId =
         jQuery(this).attr("data-id") || jQuery(this).attr("data-nested-id");

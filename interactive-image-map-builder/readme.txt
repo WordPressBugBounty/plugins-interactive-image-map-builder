@@ -2,8 +2,8 @@
 Contributors: MehjabinOrthi
 Tags: interactive image map builder, interactive image map, image canvas, draw floor plan, image labeling tool, map canvas
 Requires at least: 5.4
-Tested up to: 6.8
-Stable tag: 3.0
+Tested up to: 6.9
+Stable tag: 3.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -131,6 +131,9 @@ It is possible to replace the current styles class with your own CSS values.
 In free version, you can add maximum four area/polygon.
 
 == Changelog ==
+= 3.1 =
+* Fixed popup view in mobile and iPad
+
 = 3.0 =
 * Zoom In and Out feature added
 

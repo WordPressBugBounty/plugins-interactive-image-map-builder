@@ -39,6 +39,10 @@ function isimb_6310_replace($data) {
 	while(strpos($data, "\\") !== false) {
 			$data = str_replace("\\", "", $data);
 	}
+
+   while(strpos($data, "@@##!!@@") !== false) {
+      $data = str_replace("@@##!!@@", "'", $data);
+   }
 	return $data;
 }
 
@@ -1925,7 +1929,7 @@ function isimb_6310_add_new_media($id, $results = [])
                         <div class='{$className1} {$className2}'>
                            <div class='{$modal_element}{$className2}-element'>
                               <div class='{$closeButton}'></div>
-                              {$link_start}".esc_attr($js->linkText)."{$link_end}                   
+                              {$link_start}".isimb_6310_replace(esc_attr($js->linkText))."{$link_end}                   
                            </div>                    
                         </div>
                      {$modal_end}
@@ -1981,7 +1985,7 @@ function isimb_6310_add_new_media($id, $results = [])
                                        <img src='{$js->openDesImg}' alt=''>
                                     </div>
                                     <div class='isimb-6310-template-03-tooltip-testimonial-content'>
-                                       <div class='isimb-6310-template-03-tooltip-testimonial-title'>".esc_attr($js->linkText)."</div>
+                                       <div class='isimb-6310-template-03-tooltip-testimonial-title'>".isimb_6310_replace(esc_attr($js->linkText))."</div>
                                        <div class='isimb-6310-template-03-tooltip-description'>
                                           ".esc_attr($js->openDescription)."
                                        </div>                    
@@ -2136,13 +2140,13 @@ function isimb_6310_add_new_media($id, $results = [])
                <div class='isimb-6310-template-01-hover-content'>
                   <div class='{$closeButton}'></div>  
                   <div class='isimb-6310-custom-code'>
-                     {$js->customeHtmlCode}
+                    ".isimb_6310_replace($js->customeHtmlCode)."
                   </div>   
                </div>   
             </div>
          {$modal_end}
       ";
-      $customCSS .= "{$js->customeCssCode}";      
+      $customCSS .= isimb_6310_replace($js->customeCssCode);      
    } 
 
    if($modal_start){

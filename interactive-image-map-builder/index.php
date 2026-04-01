@@ -1,12 +1,12 @@
 <?php
 
 /*
-  Plugin Name: Interactive Image Map Builder
+  Plugin Name: Interactive Image Map Builder Free
   Plugin URI: https://wordpress.org/plugins/interactive-image-map-builder/
   Description: Interactive SVG Image Map Builder is a powerful &amp; robust but easy to represent your information with different layouts and embedded video.
   Author: Mehjabin Orthi
   Author URI: https://www.wpmart.org/
-  Version: 3.0
+  Version: 3.1
  */
 if (!defined('ABSPATH'))
    exit;
@@ -17,7 +17,7 @@ if (!defined('ABSPATH'))
 
 define('isimb_6310_plugin_url', plugin_dir_path(__FILE__));
 define('isimb_6310_plugin_dir_url', plugin_dir_url(__FILE__));
-define('isimb_6310_PLUGIN_CURRENT_VERSION', 3.0);
+define('isimb_6310_PLUGIN_CURRENT_VERSION', 3.1);
 
 add_shortcode('isimb_6310_builder', 'isimb_6310_builder_shortcode');
 
